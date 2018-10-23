@@ -5,4 +5,5 @@
 int main(void)
 {
     printf("HEllo git");
+    printf("OK!");
 }
