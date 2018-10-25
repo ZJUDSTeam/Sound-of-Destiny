@@ -7,7 +7,7 @@
  * this function will read the relationship between nodes
  * then build a tree with initial value INF
  */
-Tree BuildTree(int N){
+Tree BuildTree(FILE* fp, int N){
     int index; /* the index of current node */
     Tree T;
     T = (Tree)calloc(sizeof(struct TreeNode),(N)); /* initialize the tree */
@@ -19,7 +19,7 @@ Tree BuildTree(int N){
     for (index=0; index<N; index++){
         /* get the index of left child and right child */
         int left_index, right_index;
-        scanf("%d%d", &left_index,&right_index);
+        fscanf(fp, "%d%d", &left_index,&right_index);
         T[index].left = left_index;
         T[index].right = right_index;
         T[index].value = INF; /* set the initial value */
@@ -30,12 +30,12 @@ Tree BuildTree(int N){
 /*
  * the function GetKey will read the given keys
  */
-int* GetKey(int N){
+int* GetKey(FILE* fp, int N){
     int* K;
     K = (int*)calloc(sizeof(int),(N)); /* initialize the key array */
     int i;
     for (i=0; i<N; i++){
-        scanf("%d",&K[i]);
+        fscanf(fp,"%d",&K[i]);
     }
     return K;
 }

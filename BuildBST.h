@@ -18,8 +18,8 @@ struct TreeNode{
 };
 int* K; /* use pointer to represent an array that store the keys */
 
-Tree BuildTree(int N);
-int* GetKey(int N);
+Tree BuildTree(FILE* fp, int N);
+int* GetKey(FILE* fp, int N);
 void SortKey(int* A, int N);
 void InOrderInsert(Tree T, int root);
 void LevelOrder(Tree T);
