@@ -77,6 +77,13 @@ void InOrderInsert(Tree T, int root){
  * while queue is not empty, dequeue the node and then enqueue its children
  */
 void LevelOrder(Tree T){
+    FILE* fp; /* the result file */
+    if( (fp = fopen( "result.dat","wb")) == NULL )
+    {
+        printf( "Open File Failed\n");
+        exit(1);
+    }
+
     struct TreeNode queue[MaxTree], p;
     /* the head points to the front of the queue
      * the tail points to the rear of the queue
@@ -86,7 +93,7 @@ void LevelOrder(Tree T){
     while (head != tail){ /* the queue is not empty */
         p = queue[head]; /* get the head of queue */
         head = (head+1) % MaxTree; /* update the head */
-        printf("%d ", p.value); /* visit the node */
+        fprintf(fp, "%d ", p.value); /* visit the node */
         if (p.left != Empty){ /* if the current node has left children, let it enqueue */
             queue[tail] = T[p.left];
             tail = (tail+1) % MaxTree; /* prevent array subscripts from crossing the boundary  */
